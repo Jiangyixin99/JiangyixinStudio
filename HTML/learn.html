@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>学习笔记</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <style>
+        #end {
+            color: black;
+            text-decoration: none;
+
+        }
+
+        #end:hover {
+            color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <h3 id="live"></h3>
+    <p>
+    <h1>标签语义</h1>
+    </p>
+
+    <p>
+    <h3>基本标签</h3>
+    标题标签: h1 ~ 6<br>
+    段落标签: p<br>
+    换行标签: br<br>
+    加粗标签: strong,b <strong>加粗</strong><br>
+    倾斜标签: em,i<em>倾斜</em><br>
+    删除标签: del,s<del>删除</del><br>
+    下划线标签: ins,u<ins>下划线</ins><br>
+    盒子标签:div span(div独占一行的盒子,span不论大小的盒子)<br>
+    <a href="https://www.runoob.com/tags/html-reference.html">更多标签</a>
+    </p>
+
+    <p>
+    <h3>图像标签</h3>
+    img src(src为图像属性)<img src="images\小僵尸.jpg" width="100" heigt /><br>
+    替换文本 alt(图片显示不出来的时候将显示的文本)<img src="a.jpg" alt="小僵尸" /><br>
+    提示文本 title 可以让图片提示文字 <img src="images\小僵尸.jpg" width="100" title="小僵尸" /><br>
+    width 给图像设定宽度<br>
+    heigt 给图像设定高度<br>
+    border 给图像设定边框粗细
+    </p>
+
+    <p>
+    <h3>链接标签</h3>
+    a 链接<a href="http://www.mcmod.com/" target="_blank">mcmod</a><br>
+    target: 打开窗口的方式<br>
+    _blank: 新窗口打开 <br>
+    _self: 当前窗口打开<br>
+    <a href="xinjian.html" target="_blank">新建链接</a><br>
+    元素:图片，网页链接,内部链接,下载链接(exe,zip...),空链接(#),锚点链接(点击定位到该页面的指定位置)<br>
+    </p>
+
+    <!-- 注释字符 -->
+    空格字符代码: nbsp <br>
+    符号代码查询: <a href="https://www.runoob.com/html/html-entities.html" target="_blank">字符代码</a><br>
+    <!-- &nbsp -->
+
+    <p>
+    <h3>表格标签</h3>
+    表格table<br>
+    行:tr<br>
+    格:td<br>
+    表头:th(加粗 居中)<br>
+    <table align="center" border="">
+        <thead>
+            <tr>
+                <th>明星</th>
+                <th>年龄</th>
+                <th>性别</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>化成雨</td>
+                <td>18</td>
+                <td>男</td>
+            </tr>
+            <tr>
+                <td colspan="3">第二个表</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td colspan="2">3</td>
+            </tr>
+        </tbody>
+    </table>
+    表格属性<br>
+    align 表格在页面位置 位置(left center right)<br>
+    border 为表格边框 1 或""<br>
+    cellpadding 单元格与文字的距离<br>
+    cellspacing 单元格之间的距离 (默认为零)<br>
+    thead 定义表格表头<br>
+    tbody 定义表格主体<br>
+    rowspan 跨行合并单元格<br>
+    colspan 跨列合并单元格<br>(后续基本用css配置)
+    </p>
+
+    <p>
+    <h2>列表</h2>
+
+    <h3>无序列表</h3>
+    ul 列表(里面只能放li)<br>
+    li 元素<br>(后续基本用css配置)
+
+    <h3>有序列表</h3>
+    ol 列表<br>
+    li 元素<br>(后续基本用css配置)
+
+    <h3>自定义列表</h3>
+    dl 列表<br>
+    dt 项目名称<br>
+    dd 项目元素<br>(后续基本用css配置)
+    <dl>
+        <dt>10</dt>
+        <dd>9</dd>
+        <dd>8</dd>
+        <dt>10</dt>
+        <dd>9</dd>
+        <dd>8</dd>
+    </dl>
+
+    <h3>表单标签</h3>
+    <h4>form 表单域(用于提交给后台信息)</h4> 属性(后续学习)<br>
+    <h4>表单控件(元素)</h4><br>
+    表单输入 (input type 属性值)<br>
+    <h3>type 元素</h3>text(文本) password(密码) ... <br>
+    <h3>input 元素</h3><br>
+    name()<br>
+    value() <br>
+    checked(主要针对单选和复选按钮)<br>
+    maxlength(默认值)<br>
+    <img src="images/type.png" width="500" title="type"><a href="">更多属性</a><br>
+
+    <from>
+        <!-- 用户界面 设置后台输出值的名称name属性 -->
+        用户名<input type="text" name="username" value="请输入用户名" maxlength="6"><br>
+        密码<input type="password" name="pwd" value="请输入密码"><br>
+        <!-- 单选radio属性 设置默认选项checke="checked"属性 使名称有交互性label标签-->
+        性别:<input type="radio" name="sex" value="男" checked="checked" id="nan">
+        <label for="nan">男</label>
+        <input type="radio" name="sex" value="女" id="nv">
+        <label for="nv">女</label><br>
+        <!-- 多选checkbox -->
+        爱好: 吃饭<input type="checkbox" name="hobby"> 睡觉<input type="checkbox" name="hobby"><br>
+        <!-- 下拉列表select 选项option 默认选项option selected="selected" -->
+        星球:<select>
+            <option selected="selected">水星</option>
+            <option>火星</option>
+            <option>金星</option>
+            <option>土星</option>
+            <option>木星</option>
+        </select>
+        <!-- 提交表单数据submit -->
+        <input type="submit" value="注册"><br>
+        <!-- 重置表单数据resrt -->
+        <input type="reset" value="重新填写"><br>
+        <!-- button 后期结合js使用 -->
+        <input type="button" value="获取验证码"><br>
+        <!-- 上传文件file -->
+        <input type="file">
+
+    </from>
+    提示信息
+    </p>
+
+    <p>
+    <h2>表单元素</h2>
+    <h3>label标签</h3><br>
+    用法:定义输出id 将id加入label标签<br>
+    用于绑定表单上的一个元素 点击label标签内文本 会自动聚焦光标<br>
+    增加用户体验<br>
+
+    <h3>下拉表单标签select</h3><br>
+    选项 option(添加默认选项 selected)<br>
+
+    <h3>文本域textarea</h3>
+    <!-- 比文本框大 -->
+
+
+
+
+
+
+    </p>
+
+
+
+
+
+    <a id="end" href="#live">回到顶部</a>
+</body>
+
+</html>

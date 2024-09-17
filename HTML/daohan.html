@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>导航栏</title>
+    <style>
+        .nav {
+            height: 41px;
+            border-top: 3px solid #ff8500;
+            border-bottom: 1px solid #edeef0;
+            font: #4c4c4c;
+            background-color: #fcfcfc;
+            line-height: 41px;
+        }
+
+        a {
+            /* 行内元素没有高 转换成行内块元素 */
+            display: inline-block;
+            height: 41px;
+            /* 内边距  前为上下 后为左右*/
+            padding: 0 20px;
+            /* 文字大小 */
+            font-size: 12px;
+            /* 取消下划线 */
+            text-decoration: none;
+            /* 文字颜色 */
+            color: #4c4c4c;
+            background-color: #fff;
+        }
+
+        a:hover {
+            background-color: #eee;
+            color: #ff8500;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <a href="#">导航栏</a>
+        <a href="#">手机新浪网</a>
+        <a href="#">移动客户端</a>
+        <a href="#">微博</a>
+        <a href="#">三个字</a>
+    </div>
+</body>
+
+</html>
