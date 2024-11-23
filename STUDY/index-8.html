@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>直角三角形 做成了价格标签</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .i {
+        float: left;
+        width: 0;
+        height: 0;
+        border-color: orange transparent transparent transparent;
+        border-style: solid;
+        border-width: 30px 10px 0 0;
+        /* 没有大小的盒子 某边边框大小(长度)是中心和该边的垂线距离 */
+    }
+
+    .nav1 {
+        float: left;
+        width: 100px;
+        height: 30px;
+        line-height: 30px;
+        background-color: orange;
+        font-size: 24px;
+        font-style: italic;
+        font-weight: 700;
+        text-align: center;
+        color: white;
+    }
+
+    .nav2 {
+        float: left;
+        width: 100px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+
+    }
+
+    .bigbox {
+        /* padding: 10px; */
+        margin: 100px auto;
+        width: 300px;
+        /* width: 210px;
+        height: 30px; */
+        border: 1px solid black;
+        transition: all 0.5s ease 0s;
+    }
+
+    .bigbox:hover {
+        margin-top: 30px;
+        box-shadow: 10px 10px 5px #888888;
+
+    }
+
+
+    .nav {
+        /* 浮动元素不再占有位置 所以大盒子加上宽度和高度 脱标了 */
+        /* width: 210px;
+        height: 30px; */
+        margin: auto;
+    }
+
+    /* 清除浮动 */
+    .bigbox::after {
+        content: '';
+        display: block;
+        height: 0;
+        clear: both;
+        /* 隐藏元素 */
+        visibility: hidden;
+    }
+</style>
+
+<body>
+    <div class="bigbox">
+        <img src="images/K70.png" alt="">
+        <div class="nav">
+            <div class="nav1">￥1899</div>
+            <i class="i"></i>
+            <div class="nav2">K70</div>
+        </div>
+
+    </div>
+
+
+
+
+</body>
+
+</html>

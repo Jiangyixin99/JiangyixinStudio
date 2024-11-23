@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定位箭头</title>
+</head>
+<style>
+    .tb-box {
+        /* 相对定位 */
+        position: relative;
+        width: 520px;
+        background-color: pink;
+        margin: 100px auto;
+    }
+
+    .tb-box img {
+        width: 520px;
+    }
+
+    .left,
+    .right {
+        /* 绝对定位 */
+        position: absolute;
+        top: 50%;
+        width: 20px;
+        height: 30px;
+        margin-top: -15px;
+        background-color: rgba(0, 0, 0, .7);
+        color: #fff;
+        text-align: center;
+        line-height: 30px;
+        text-decoration: none;
+    }
+
+    /* 左箭头 */
+    .left {
+        left: 0;
+        /* 圆角边框 */
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
+
+    /* 右箭头 */
+    .right {
+        right: 0;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+    }
+</style>
+
+<body>
+    <div class="tb-box">
+        <a href="index-2.html" class="left"> &lt; </a>
+        <div class="next-1"></div>
+        <img src="images/HeQuanWuSha.jpg" alt="">
+        <a href="index-2.html" class="right"> &gt; </a>
+        <ul class="nav"></ul>
+    </div>
+</body>
+
+</html>

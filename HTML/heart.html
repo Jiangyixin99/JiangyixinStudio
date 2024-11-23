@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Shape</title>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        .heart {
+            position: relative;
+            margin: auto;
+            margin-top: 300px;
+            width: 100px;
+            height: 90px;
+
+            /* transition: all 10s;
+            /* 调用动画 */
+            /* animation-name: move; */
+            /* 定义时间 */
+            /* animation-duration: 10s; */
+            /* 播放次数 */
+            /* animation-iteration-count: infinite; */
+            /* 延时 */
+            /* animation-delay: -3s; */
+            /* 运动曲线 匀速播放*/
+            /* animation-timing-function: linear; */
+            /* 逆时针播放 */
+            /* animation-direction: alternate; */
+
+            animation: rotateHeart 2s linear infinite alternate;
+            /* transform-style: preserve-3d; */
+        }
+
+        .heart::before,
+        .heart::after {
+            position: absolute;
+            content: "";
+            left: 50px;
+            top: 0;
+            width: 100px;
+            height: 160px;
+            background: red;
+            border-radius: 100px 100px 0 0;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
+
+        .heart::after {
+            /* display: none; */
+            left: -50px;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+
+        .heart:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes rotateHeart {
+            from {
+                transform: rotateY(0deg) scale(1);
+            }
+
+            to {
+                transform: rotateY(15000deg) scale(1.5);
+            }
+        }
+
+
+        @keyframes rotateHeartt {
+            from {
+                transform: rotateY(0deg) scale(1);
+                transform: skew(180deg 0deg);
+            }
+
+            to {
+                transform: rotateY(15000deg) scale(1.5);
+            }
+        }
+
+        .xiao {
+            animation: rotateHeartt 2s linear infinite alternate;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="heart">
+
+    </div>
+    <div class="xiao heart">
+
+    </div>
+</body>
+
+</html>

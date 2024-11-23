@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>盒子</title>
+</head>
+<style>
+    .box {
+        position: relative;
+        float: left;
+        width: 100px;
+        height: 200px;
+        border: 4px solid pink;
+        margin-left: -4px;
+    }
+
+    .bigbox .box:hover {
+        /* position: relative; */
+        z-index: 1;
+        border: 4px solid cyan;
+    }
+
+    textarea {
+        width: 100px;
+        height: 100px;
+        resize: none;
+        outline: none;
+    }
+
+    input {
+        outline: none;
+    }
+
+    .text {
+        float: left;
+        width: 20px;
+        height: 10px;
+    }
+
+    .one {
+        float: left;
+        width: 100px;
+        height: 100px;
+        /* background-color: pink; */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        border: 4px sloid pink;
+
+
+    }
+</style>
+
+<body>
+    <div class="bigbox">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+
+    <div class="text">
+        <!-- <textarea name="" id="">请输入文字</textarea> -->
+        <!-- <input type="text"> -->
+    </div>
+
+    <div class="one">
+        隐藏了吗？人机人机人机人机
+    </div>
+</body>
+
+</html>

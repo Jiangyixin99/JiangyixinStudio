@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 页码布局</title>
+</head>
+<style>
+    * {
+        text-decoration: none;
+    }
+
+    .box {
+        /* height: 36px; */
+        /* margin: auto; */
+        /* 盒子占整行 所以直接居中 父盒子添加 行内块 会自动居中 */
+        text-align: center;
+    }
+
+    .box a {
+        /* a标签得转换成行内块元素 */
+        display: inline-block;
+        width: 36px;
+        height: 36px;
+        background-color: #eee;
+        line-height: 36px;
+        color: black;
+        border: 1px sloid #ccc;
+    }
+
+    .box .prec,
+    .box .next {
+        width: 100px;
+    }
+</style>
+
+<body>
+    <div class="box">
+        <a href="#" class="prec">&lt;&lt;上一页</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">6</a>
+        <a href="#">7</a>
+        <a href="#" class="next">下一页&gt;&gt;</a>
+    </div>
+</body>
+
+</html>
