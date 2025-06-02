@@ -1,0 +1,20 @@
+spring:
+#  数据库配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/mypro?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#服务器端口1
+server:
+  port: 7071
+
+#导入SQL文件
+mybatis:
+  mapper-locations: classpath:mappers/*.xml # Mapper XML 文件路径
+# 配置可加可不加
+  configuration:
+    log-underscore-to-camel-case: true
+logging:
+  level:
+    root: DEBUG

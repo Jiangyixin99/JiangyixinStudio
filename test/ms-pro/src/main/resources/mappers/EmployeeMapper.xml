@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mypro.mapper.EmployeeMapper">
+    <resultMap id="base_result_map" type="com.mypro.entity.po.Employee">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="sex" property="sex"/>
+        <result column="no" property="no"/>
+        <result column="age" property="age"/>
+        <result column="description" property="description"/>
+        <result column="department_id" property="departmentId"/>
+
+    </resultMap>
+
+    <select id="selectAllEmployee" resultMap="base_result_map">
+        select * from Employee
+    </select>
+
+    <select id="selectById" resultMap="base_result_map">
+        select * from Employee where id = #{id}
+    </select>
+
+    <insert id="insert">
+        INSERT INTO `employee` (`name`, `sex`, `no`, `age`, `description`, `department_id`) VALUES (#{name}, #{sex},
+        #{no}, #{age}, #{description}, #{departmentId});
+    </insert>
+
+    <update id="updateEmployee">
+        UPDATE `employee` SET `name` = #{name}, `sex` = #{sex}, `no` = #{no}, `age` = #{age}, `description` =
+        #{description}, `department_id` = #{departmentId} WHERE `id` = #{id};
+    </update>
+
+    <delete id="deleteById">
+        DELETE from `employee` where id = #{id};
+    </delete>
+</mapper>
