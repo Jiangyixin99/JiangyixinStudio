@@ -33,20 +33,20 @@ public class EmployeeService {
     public void deleteById(Integer id){
         employeeMapper.deleteById(id);
     }
-    public List<Employee> selectAllEmployee() {
-        List<Employee> list = employeeMapper.selectAllEmployee();
+
+    public List<Employee> selectAllEmployee(Employee employee) {
+        List<Employee> list = employeeMapper.selectAllEmployee(employee);
         return list;
     }
-
 
     public Employee selectById(Integer id) {
         return employeeMapper.selectById(id);
     }
 
     //分页查询
-    public PageInfo<Employee> selectPage(Integer pageNum, Integer pageSize) {
+    public PageInfo<Employee> selectPage(Employee employee, Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
-        List<Employee> list = employeeMapper.selectAllEmployee();
+        List<Employee> list = employeeMapper.selectAllEmployee(employee);
         return PageInfo.of(list);
     }
 

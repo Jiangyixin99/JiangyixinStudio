@@ -15,6 +15,10 @@
 
     <select id="selectAllEmployee" resultMap="base_result_map">
         select * from Employee
+        <where>
+            <if test="name != null">name like concat('%', #{name}, '%')</if>
+        </where>
+        order by id desc
     </select>
 
     <select id="selectById" resultMap="base_result_map">

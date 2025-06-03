@@ -4,6 +4,7 @@ import com.mypro.common.Result;
 import com.mypro.entity.po.Employee;
 import com.mypro.service.EmployeeService;
 import jakarta.annotation.Resource;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,37 +17,41 @@ public class EmployeeController {
     @Resource
     private EmployeeService employeeService;
 
-    @RequestMapping("selectAllEmployee")
-    public Result selectAllEmployee() {
-        List<Employee> list = employeeService.selectAllEmployee();
+    @GetMapping("selectAllEmployee")
+    public Result selectAllEmployee(Employee employee) {
+        List<Employee> list = employeeService.selectAllEmployee(employee);
         return Result.success(list);
     }
-//路径参数 @PathVariable
+
+    //路径参数 @PathVariable
     @RequestMapping("selectAllEmployee/{id}")
     public Result selectById(@PathVariable Integer id) {
         Employee employee = employeeService.selectById(id);
         return Result.success(employee);
     }
 
-    @RequestMapping("selectPage")
-    public Result selectPage(@RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "2") Integer pageSize){
-        return Result.success(employeeService.selectPage(pageNum,pageSize));
+    @GetMapping("selectPage")
+    public Result selectPage(
+            Employee employee,
+            @RequestParam(defaultValue = "1") Integer pageNum,
+            @RequestParam(defaultValue = "2") Integer pageSize) {
+        return Result.success(employeeService.selectPage(employee, pageNum, pageSize));
     }
 
-    @RequestMapping("insertEmployee")
-    public Result insertEmployee(@RequestBody Employee employee){
+    @PostMapping("insertEmployee")
+    public Result insertEmployee(@RequestBody Employee employee) {
         employeeService.insertEmployee(employee);
         return Result.success();
     }
 
-    @RequestMapping("updateEmployee")
-    public Result update(@RequestBody Employee employee){
+    @PostMapping("updateEmployee")
+    public Result update(@RequestBody Employee employee) {
         employeeService.updateEmployee(employee);
         return Result.success();
     }
 
-    @RequestMapping("deleteById/{id}")
-    public Result deleteById(@PathVariable Integer id){
+    @PostMapping("deleteById/{id}")
+    public Result deleteById(@PathVariable Integer id) {
         employeeService.deleteById(id);
         return Result.success();
     }

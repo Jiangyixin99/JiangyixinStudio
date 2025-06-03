@@ -6,7 +6,7 @@ import com.mypro.entity.po.Employee;
 import java.util.List;
 
 public interface EmployeeMapper {
-    List<Employee> selectAllEmployee();
+    List<Employee> selectAllEmployee(Employee employee);
     Employee selectById(Integer id);
     void insert(Employee employee);
     void updateEmployee(Employee employee);
