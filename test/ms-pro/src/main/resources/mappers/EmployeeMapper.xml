@@ -14,7 +14,7 @@
     </resultMap>
 
     <select id="selectAllEmployee" resultMap="base_result_map">
-        select * from Employee
+        select employee.*, department.name as departmentName from Employee left join department on employee.department_id = department.id
         <where>
             <if test="name != null">name like concat('%', #{name}, '%')</if>
         </where>
@@ -22,7 +22,7 @@
     </select>
 
     <select id="selectById" resultMap="base_result_map">
-        select * from Employee where id = #{id}
+        select * from Employee where id = #{id};
     </select>
 
     <insert id="insert">

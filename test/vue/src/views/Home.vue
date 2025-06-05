@@ -11,9 +11,7 @@
 </script>
 
 <template>
-    <!-- <RouterLink to="/test">
-        1
-    </RouterLink> -->
+
 
     主页
 

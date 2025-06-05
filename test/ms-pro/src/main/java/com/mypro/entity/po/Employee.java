@@ -1,13 +1,24 @@
 package com.mypro.entity.po;
 
+import org.springframework.lang.NonNull;
+
 public class Employee {
     private Integer id;
     private String name;
-    private String sex;
+    private Integer sex;
     private String no;
     private Integer age;
     private String description;
     private Integer departmentId;
+    private String departmentName;
+
+    public String getDepartmentName() {
+        return departmentName;
+    }
+
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
+    }
 
     public Integer getId() {
         return id;
@@ -21,17 +32,19 @@ public class Employee {
         return name;
     }
 
+    public Integer getSex() {
+        return sex;
+    }
+
+    public void setSex(Integer sex) {
+        this.sex = sex;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getSex() {
-        return sex;
-    }
 
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
 
     public String getNo() {
         return no;

@@ -16,7 +16,7 @@
     </div>
 
     <div class="card" style="margin-bottom: 5px;">
-        <!-- 表格 -->
+        <!-- 用户数据表格 -->
         <el-table :data="data.tableData">
             <el-table-column label="名称" prop="name" />
             <el-table-column label="性别" prop="sex" />
@@ -24,7 +24,18 @@
             <el-table-column label="年龄" prop="age" />
             <el-table-column label="个人介绍" prop="description" />
             <el-table-column label="部门" prop="departmentName" />
+            <!-- scope.row获取行对象 注意:是对象 不是单纯的数据 -->
+            <el-table-column label="操作">
+                <template #default="scope">
+                    <el-button link type="primary" icon="edit" @click="handleUpdate(scope.row)"> 编辑
+                    </el-button>
+                    <el-button link type="danger" icon="delete" @click="deleteEmployeeByNo(scope.row)"> 删除
+                    </el-button>
+                </template>
+            </el-table-column>
+
         </el-table>
+
         <!-- 页码 -->
         <div style="margin-top: 10px;">
             <el-pagination @change="load" v-model:current-change="data.pageNum" v-model:page-size="data.pageSize"
@@ -42,8 +53,8 @@
 
                 <el-form-item label="性别">
                     <el-radio-group v-model="data.form.sex">
-                        <el-radio value="男" label="男"></el-radio>
-                        <el-radio value="女" label="女"></el-radio>
+                        <el-radio value="1" label="男"></el-radio>
+                        <el-radio value="0" label="女"></el-radio>
                     </el-radio-group>
                 </el-form-item>
 
@@ -61,9 +72,11 @@
                         placeholder="请输入个人介绍" />
                 </el-form-item>
 
-                <!-- <el-form-item label="部门">
-                    <el-input v-model="data.form.departmentName" autocomplete="off" />
-                </el-form-item> -->
+                <el-form-item label="部门">
+                    <el-select v-model="data.form.departmentId" placeholder="请选择部门名称" size="large" style="width: 240px">
+                        <el-option v-for="item in data.department" :key="item.id" :label="item.name" :value="item.id" />
+                    </el-select>
+                </el-form-item>
 
             </el-form>
 
@@ -82,7 +95,8 @@
 <script setup>
 import request from '@/utils/request.js';
 import { ElMessage } from 'element-plus';
-import { ref, reactive } from 'vue';
+import { ref, reactive, onMounted } from 'vue';
+import Api from '@/const/Api'
 
 
 const data = reactive({
@@ -92,43 +106,93 @@ const data = reactive({
     pageSize: 10,
     total: 0,
     formVisible: false,
-    form: {}
+    editVisible: false,
+    form: {},
+    department: {}
 })
 //调用java中的
 // 将数据库的数据写入到表格中
-const load = () => {
-    request.get('/employee/selectPage', {
+//表格查询功能
+async function load() {
+    const res = await request.get(Api.selectPage, {
         params: {
             pageNum: data.pageNum,
             pageSize: data.pageSize,
             name: data.name
         }
-    }).then(res => {
-        data.tableData = res.data.list
-        data.total = res.data.total
     })
+    data.tableData = res.data.list
+    data.total = res.data.total
 }
-load()
-//查询重置
+
+//表格查询重置功能
 const reset = () => {
     data.name = null
     load()
 }
-// 新增按钮的弹窗显示
-const handleAdd = () => {
-    data.formVisible = true
-    data.form = {}
+
+//表格新增员工显示部门数据功能
+async function getDepartment() {
+    const res = await request.get(Api.selectDepartment)
+    data.department = res.data
 }
-// 保存
-const save = () => {
-    request.post('/employee/insertEmployee', data.form).then(res => {
-        if (res.code === 200) {
-            ElMessage.success('操作成功')
-            data.formVisible = false
-            load()
-        } else {
-            ElMessage.error(res.msg)
+
+//表格新增员工的弹窗显示功能
+function handleAdd() {
+    getDepartment()
+    data.form = {}
+    data.formVisible = true
+}
+
+function handleUpdate(row) {
+    getDepartment()
+    // 将对象中的数据提取给data.form 而不是直接修改对象row 
+    data.form = JSON.parse(JSON.stringify(row))
+    data.formVisible = true
+}
+
+//表格新增员工弹窗的保存功能
+async function save() {
+    data.form.id ? edit() : add()
+}
+//表格新增员工的新增功能
+async function add() {
+    const res = await request.post(Api.insertEmployee, data.form)
+    if (res.code === 200) {
+        ElMessage.success('操作成功')
+        // 关闭弹窗
+        data.formVisible = false
+        load()
+    } else {
+        ElMessage.error(res.msg)
+    }
+}
+//表格编辑员工信息功能
+async function edit() {
+    const res = await request.put(Api.updateEmployee, data.form)
+    if (res.code === 200) {
+        ElMessage.success('操作成功')
+        // 关闭弹窗`
+        data.formVisible = false
+        load()
+    } else {
+        ElMessage.error(res.msg)
+    }
+}
+
+// 表格删除员工信息功能
+async function deleteEmployeeByNo(row) {
+    data.form = JSON.parse(JSON.stringify(row))
+    const res = await request.delete(Api.deleteEmployeeById, {
+        params: {
+            "id": data.form.id
         }
     })
+    load()
 }
+
+onMounted(() => {
+    load()
+})
+
 </script>

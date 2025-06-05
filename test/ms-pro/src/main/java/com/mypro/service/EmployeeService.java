@@ -4,6 +4,7 @@ package com.mypro.service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.mypro.entity.po.Employee;
+import com.mypro.mapper.DepartmentMapper;
 import com.mypro.mapper.EmployeeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,12 +17,13 @@ public class EmployeeService {
 
     @Autowired
     private EmployeeMapper employeeMapper;
-
+    private DepartmentMapper departmentMapper;
     //这句应该没用 我暂时不知道
     public EmployeeMapper getEmployeeMapper() {
         return employeeMapper;
     }
 
+    //TODO 插入数据判断是否为空 和 判断长度是否过长 用正则表达式 
     public void insertEmployee(Employee employee) {
         employeeMapper.insert(employee);
     }
@@ -35,8 +37,7 @@ public class EmployeeService {
     }
 
     public List<Employee> selectAllEmployee(Employee employee) {
-        List<Employee> list = employeeMapper.selectAllEmployee(employee);
-        return list;
+        return employeeMapper.selectAllEmployee(employee);
     }
 
     public Employee selectById(Integer id) {

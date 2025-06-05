@@ -10,6 +10,6 @@ public interface EmployeeMapper {
     Employee selectById(Integer id);
     void insert(Employee employee);
     void updateEmployee(Employee employee);
-
     void deleteById(Integer id);
+
 }
