@@ -24,8 +24,8 @@ import router from '@/router';
         </div>
         <!-- 头部end -->
 
+        <!-- 左侧导航栏begin -->
         <div style="display: flex; ">
-            <!-- 左侧导航栏begin -->
             <!-- 这个 router 可以设置菜单的路由给el-menu-item 设置index 后面跟路由地址 -->
             <!-- :default-active是动态设置当前el-menu中 选中的el-menu-item项 -->
             <div style="width: 200px; border-right: 1px solid #ddd; min-height: calc(100vh - 60px);">
@@ -64,7 +64,7 @@ import router from '@/router';
                         个人信息
                     </el-menu-item>
 
-                    <el-menu-item index="">
+                    <el-menu-item index="/login">
                         <el-icon>
                             <SwitchButton />
                         </el-icon>

@@ -3,14 +3,14 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--方法映射的位置-->
 <mapper namespace="com.mypro.mapper.DepartmentMapper">
-    <resultMap id="base_result_map" type="com.mypro.entity.po.Department">
+    <resultMap id="department_base_result_map" type="com.mypro.entity.po.Department">
         <result column="id" property="id"/>
         <result column="name" property="name"/>
 
 
     </resultMap>
 
-    <select id="selectDepartment" resultMap="base_result_map">
+    <select id="selectDepartment" resultMap="department_base_result_map">
         select * from department
     </select>
 </mapper>

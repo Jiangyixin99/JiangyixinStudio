@@ -4,7 +4,7 @@
 <!--方法映射的位置-->
 <mapper namespace="com.mypro.mapper.UserInfoMapper">
     <!--对象映射的位置-->
-    <resultMap id="base_result_map" type="com.mypro.entity.po.UserInfo">
+    <resultMap id="userinfo_base_result_map" type="com.mypro.entity.po.UserInfo">
         <!-- 用户id -->
         <id column="id" property="id"/>
         <!-- 注册时间 -->
@@ -36,7 +36,7 @@
 
     </insert>
 
-    <select id="selectById" resultMap="base_result_map">
+    <select id="selectById" resultMap="userinfo_base_result_map">
         SELECT
         *
         FROM

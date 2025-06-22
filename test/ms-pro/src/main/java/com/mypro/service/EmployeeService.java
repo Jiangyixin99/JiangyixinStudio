@@ -4,6 +4,8 @@ package com.mypro.service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.mypro.entity.po.Employee;
+import com.mypro.enums.ResponseEnum;
+import com.mypro.exception.BusinessException;
 import com.mypro.mapper.DepartmentMapper;
 import com.mypro.mapper.EmployeeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,5 +53,11 @@ public class EmployeeService {
         return PageInfo.of(list);
     }
 
+
+    public void deleteBatch(List<Integer> ids) {
+        for (Integer id : ids){
+            employeeMapper.deleteById(id);
+        }
+    }
 
 }

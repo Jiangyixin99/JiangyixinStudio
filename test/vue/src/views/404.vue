@@ -3,7 +3,7 @@ import router from "@/router/index.js";
 </script>
 
 <template>
-    <img src="@/assets/very_sorry.png" alt="">
+    <img src="@/assets/404.png" alt="">
     <el-button type="primary" @click="router.push('/')">主页</el-button>
 
 </template>

@@ -7,9 +7,14 @@ import java.util.List;
 
 public interface EmployeeMapper {
     List<Employee> selectAllEmployee(Employee employee);
-    Employee selectById(Integer id);
+
     void insert(Employee employee);
+
     void updateEmployee(Employee employee);
+
     void deleteById(Integer id);
 
+    Employee selectById(Integer id);
+
+    Employee selectByUsername(String username);
 }

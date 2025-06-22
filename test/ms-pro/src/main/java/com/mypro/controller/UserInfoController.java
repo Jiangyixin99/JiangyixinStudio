@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("UserInfo")
 public class UserInfoController {
-
-    @Resource
-    private UserInfoService userInfoService;
-    @RequestMapping("selectUserInfo/{id}")
-    public Result selectUserInfo(@PathVariable String id){
-        UserInfo userInfo = userInfoService.userInfo(id);
-        return Result.success(userInfo);
-    }
+//
+//    @Resource
+//    private UserInfoService userInfoService;
+//    @RequestMapping("selectUserInfo/{id}")
+//    public Result selectUserInfo(@PathVariable String id){
+//        UserInfo userInfo = userInfoService.userInfo(id);
+//        return Result.success(userInfo);
+//    }
 
 
 }
