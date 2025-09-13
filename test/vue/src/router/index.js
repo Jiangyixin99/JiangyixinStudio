@@ -15,7 +15,10 @@ const router = createRouter({
 
       ]
     },
+    // 登录
     { path: '/login', name: 'Login', meta: { title: '登录系统' }, component: () => import('../views/Login.vue'), },
+    // 注册
+    { path: '/register', name: 'Register', meta: { title: '注册系统' }, component: () => import('../views/Register.vue'), },
 
     { path: '/404', name: 'NotFound', meta: { title: '404找不到页面' }, component: () => import('../views/404.vue'), },
 

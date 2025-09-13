@@ -5,7 +5,7 @@
                 <!-- 表单 -->
                 <el-form ref="formRef" :rules="data.rules" :model="data.from">
                     <!-- 标题 -->
-                    <div style="font-size: 3vh; text-align: center; margin-bottom: 10px; color: black;">后台管理系统</div>
+                    <div style="font-size: 3vh; text-align: center; margin-bottom: 10px; color: black;">欢迎注册</div>
                     <!-- 账号 -->
                     <el-form-item prop="username">
                         <el-input size="large" v-model="data.from.username" placeholder="请输入账号"
@@ -17,14 +17,18 @@
                         <el-input show-password size="large" v-model="data.from.password" placeholder="请输入密码"
                             prefix-icon="Lock"></el-input>
                     </el-form-item>
-
+                    <!-- 确认密码 -->
+                    <el-form-item prop="confirmPassword">
+                        <el-input show-password size="large" v-model="data.from.confirmPassword" placeholder="请确认密码"
+                            prefix-icon="Lock"></el-input>
+                    </el-form-item>
                     <div style="margin-bottom: 20px;">
-                        <el-button @click="login()" size="large" style="width: 100%;" type="primary">
-                            登录
+                        <el-button @click="register()" size="large" style="width: 100%;" type="primary">
+                            注册
                         </el-button>
                     </div>
                     <div style="text-align: right;">
-                        还没有账号?请 <a style="color: #0742b1; text-decoration: none;" href="/register">注册</a>
+                        已有有账号?请 <a style="color: #0742b1; text-decoration: none;" href="/login">登录</a>
                     </div>
                 </el-form>
             </div>
@@ -42,28 +46,38 @@ import { ElMessage } from 'element-plus';
 import { reactive, ref } from 'vue';
 import request from '@/utils/request.js';
 
+const validatePass = (rule, value, callback) => {
+    if (value === '') {
+        callback(new Error('请再输一次密码'))
+    } else if (value !== data.from.password) {
+        callback(new Error("两次输入的密码不一致"))
+    } else {
+        callback()
+    }
+}
+
 const data = reactive({
     from: {},
     rules: {
         username: [{ required: true, message: '请输入账号', trigger: 'blur' }],
-        password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
+        password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
+        confirmPassword: [{ validator: validatePass, trigger: 'blur' }]
     }
 
 })
 const formRef = ref()
 
-async function login() {
+async function register() {
     // 表单校验
     const valid = await formRef.value.validate()
     if (valid) {
 
-        const res = await request.post(Api.login, data.from)
+        const res = await request.post(Api.register, data.from)
         if (res.code === 200) {
-            // 存储后台返回的用户信息
-            localStorage.setItem('my-pro-user', JSON.stringify(res.data))
-            ElMessage.success("登录成功")
+
+            ElMessage.success("注册成功")
             setTimeout(() => {
-                location.href = '/manager/home'
+                location.href = '/login'
             }, 500);
 
         } else {

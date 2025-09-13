@@ -5,7 +5,8 @@ public enum ResponseEnum {
     SERVER_ERROR(500, "服务器内部异常,请联系管理员"),
     SUCCESSFUL(200, " 请求成功"),
     NOT_FOUND_ERROR(404, "找不到地址"),
-    ACCOUNT_OR_PASSWORD_ERROR(1001, "账号或密码错误");
+    ACCOUNT_OR_PASSWORD_ERROR(1001, "账号或密码错误"),
+    ACCOUNT_ALREADY_EXISTS(409,"账号已存在");
     private Integer code;
     private String msg;
 

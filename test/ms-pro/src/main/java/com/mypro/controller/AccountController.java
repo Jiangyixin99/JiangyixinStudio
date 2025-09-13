@@ -21,10 +21,15 @@ public class AccountController {
 
     @PostMapping("login")
     public Result login(@RequestBody Employee employee){
-        accountService.login(employee);
-        return Result.success();
+        Employee dbEmployee = accountService.login(employee);
+        return Result.success(dbEmployee);
     }
 
+    @PostMapping("register")
+    public Result register(@RequestBody Employee employee){
+        accountService.register(employee);
+        return Result.success();
+    }
 
 
 }

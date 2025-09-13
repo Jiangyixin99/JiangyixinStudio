@@ -5,10 +5,13 @@ const Api = {
     selectPage: "/employee/selectPage",
     updateEmployee: "/employee/updateEmployee",
     deleteBatch: "/employee/deleteBatch",
-    login: "/account/login",
 
     // department
     selectDepartment: "/department/selectDepartment",
+
+    //account
+    login: "/account/login",
+    register: "/account/register",
 }
 
 export default Api
